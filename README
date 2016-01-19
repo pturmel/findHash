@@ -1,0 +1,14 @@
+findHash.py - Locate 4k fragments of a subject file in one or more other
+files or devices.
+
+Usage:
+    findHash.py /path/to/subject {/dev/sdX|/path/to/image} [/dev/sdY ...]
+
+The subject file is read 4k at a time, and each 4k block is hashed and
+recorded in a dictionary.  Any tail fragment less than 4k is discarded.
+
+The each device or image file is read in turn, 4k at a time.  Each 4k
+block is hashed and looked up in the subject's hash dictionary.  Where
+consecutive 4k blocks in a device or image file match consecutive 4k blocks
+in the subject file, the matches are printed with the corresponding
+offset information.
